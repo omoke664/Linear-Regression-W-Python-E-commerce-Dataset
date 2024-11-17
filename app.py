@@ -4,7 +4,7 @@ import datetime
 import pandas as pd
 from data import load_data, get_feature_range
 from model import load_model, predict
-from viz import plot_residuals, plot_coef, plot_model_metrics, plot_eda, plot_heatmap, plot_jointplot_time_on_app, plot_jointplot_time_on_website, plot_pairplot, plot_yearly_spent_distribution
+from viz import plot_residuals, plot_feature_coef, plot_model_metrics, plot_eda, plot_heatmap, plot_jointplot_time_on_app, plot_jointplot_time_on_website, plot_pairplot, plot_yearly_spent_distribution
 from metrics import calculate_metrics, calculate_residuals, get_baseline_metrics
 from streamlit_option_menu import option_menu
 
@@ -27,7 +27,7 @@ st.title("Yearly Amount Spent Predictor 🏬")
 
 # Main content area
 st.subheader("About this app")
-st.write(""""This application predicts the yearly amount spent by customers based on several features.
+st.write("""This application predicts the yearly amount spent by customers based on several features.
          This application predicts the yearly amount spent by customers based on several features. 
             You can adjust the following parameters to see how they affect the prediction:
             - **Avg. Session Length**: The average length of time a user spends in a session.
@@ -103,7 +103,7 @@ if selected == "Model Performance":
         #Visualizations
         st.subheader("Model Performance Visualizations")
         st.pyplot(plot_residuals(residuals))
-        st.pyplot(plot_coef(model, data))
+        st.pyplot(plot_feature_coef(model,data))
         st.pyplot(plot_model_metrics(metrics, baseline_metrics))
 
 elif selected == "Exploratory Data Analysis":
